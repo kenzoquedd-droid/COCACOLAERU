@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coca-Cola · 4 Slide dengan 3D & Koleksi</title>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #8B0000 0%, #B22222 100%);
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1300px;
+      width: 100%;
+      padding: 2rem 2rem;
+      margin: 0 auto;
+    }
+
+    /* NAVIGATION */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0 2.5rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo i {
+      font-size: 2.2rem;
+      color: #FFD700;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    }
+    .logo span {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #FFFFFF, #FFD700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 600;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #FFE4E1;
+      font-size: 1.1rem;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    .nav-links a:hover {
+      border-bottom-color: #FFD700;
+      color: #ffffff;
+    }
+    .btn-order {
+      background: #FFD700;
+      color: #8B0000;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 10px 20px -8px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-order:hover {
+      background: #FFC000;
+      transform: scale(1.02);
+      box-shadow: 0 16px 25px -8px black;
+    }
+
+    /* SLIDES CONTAINER */
+    .slides-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6rem;
+      margin-top: 1rem;
+    }
+
+    /* SLIDE 1 - BERANDA DENGAN BACKGROUND GAMBAR COCA-COLA */
+    .slide-beranda {
+      width: 100%;
+      min-height: 600px;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.8);
+    }
+    .bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(139,0,0,0.8) 0%, rgba(178,34,34,0.6) 50%, rgba(0,0,0,0.4) 100%);
+      z-index: 1;
+    }
+    .beranda-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 800px;
+    }
+    .beranda-content h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-shadow: 4px 4px 0 #8B0000, 8px 8px 0 rgba(0,0,0,0.2);
+      margin-bottom: 1rem;
+      color: #FFFFFF;
+      letter-spacing: 4px;
+    }
+    .beranda-content p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #FFE4E1;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .beranda-btn {
+      background: #FFD700;
+      color: #8B0000;
+      border: none;
+      padding: 16px 48px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 22px rgba(255,215,0,0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .beranda-btn:hover {
+      background: #FFC000;
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 30px rgba(255,215,0,0.6), 0 0 20px #FFD700;
+    }
+
+    /* SLIDE 2,3,4 - BACKGROUND POLOSAN (MERAH COCA-COLA) */
+    .slide {
+      background: linear-gradient(145deg, #8B0000, #A52A2A);
+      border-radius: 40px;
+      padding: 3rem;
+      box-shadow: 0 25px 40px -15px rgba(0,0,0,0.6);
+    }
+
+    /* Tata letak slide 2 dan 3 berbeda */
+    .slide-2 {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .slide-3 {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    /* LEFT/RIGHT COLUMNS */
+    .col-left h2, .col-right h2 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      background: linear-gradient(to right, #FFD700, #FFFFFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .subhead {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #FFE4E1;
+      margin-bottom: 1.5rem;
+    }
+    .flavor-tag {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 1.8rem;
+      flex-wrap: wrap;
+    }
+    .flavor-tag span {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(5px);
+      padding: 6px 20px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,215,0,0.3);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .price-section {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 1.8rem;
+    }
+    .price-big {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #FFD700;
+    }
+    .price-big small {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #FFB6C1;
+    }
+    .badge {
+      background: #FFD700;
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-weight: 700;
+      color: #8B0000;
+      font-size: 1rem;
+    }
+    .cta-group {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .btn-primary {
+      background: #FFD700;
+      border: none;
+      color: #8B0000;
+      padding: 14px 38px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 22px rgba(255,215,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-primary:hover {
+      background: #FFC000;
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 30px rgba(255,215,0,0.6), 0 0 20px #FFD700;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #FFD700;
+      color: white;
+      padding: 12px 26px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      background: rgba(255,215,0,0.1);
+      border-color: #FFC000;
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 10px 25px rgba(255,215,0,0.4), 0 0 15px #FFD700;
+    }
+    .canvas-3d {
+      width: 100%;
+      height: auto;
+      max-width: 400px;
+      aspect-ratio: 1/1.5;
+      display: block;
+      background: transparent;
+      cursor: grab;
+      margin: 0 auto;
+    }
+    .canvas-3d:active { cursor: grabbing; }
+    .rotate-hint {
+      text-align: center;
+      margin-top: 1rem;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #FFE4E1;
+      border: 1px solid rgba(255,215,0,0.4);
+      display: inline-block;
+    }
+
+    /* SLIDE 4 - KARUSEL GAMBAR COCA-COLA */
+    .slide-4 {
+      background: linear-gradient(145deg, #8B0000, #A52A2A);
+      border-radius: 40px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .slide-4 h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFD700, #FFFFFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .slide-4 p {
+      color: #FFE4E1;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .swiper {
+      width: 100%;
+      height: 280px;
+      padding: 20px 0;
+    }
+    .swiper-wrapper {
+      transition-timing-function: linear !important;
+    }
+    .swiper-slide {
+      width: auto;
+      height: 240px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide-img {
+      height: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.6);
+    }
+    .slide-img img {
+      height: 100%;
+      width: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* testimonial */
+    .testimonial-section {
+      margin-top: 4rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,215,0,0.3);
+    }
+    .testi-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-item i { font-size: 2rem; color: #FFD700; }
+    .testi-text p { font-weight: 600; color: #FFFFFF; }
+    .testi-text small { color: #FFE4E1; opacity: 0.8; }
+
+    @media (max-width: 950px) {
+      .slide-2, .slide-3 { grid-template-columns: 1fr; text-align: center; }
+      .beranda-content h1 { font-size: 3.5rem; }
+      .col-left, .col-right { text-align: center; }
+      .price-section, .flavor-tag, .cta-group { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar" data-aos="fade-down" data-aos-duration="1000">
+      <div class="logo">
+        <i class="fas fa-crown"></i>
+        <span>COCA-COLA</span>
+      </div>
+      <div class="nav-links">
+        <a href="#">Beranda</a>
+        <a href="#">Produk</a>
+        <a href="#">Kesegaran</a>
+        <a href="#">Kontak</a>
+      </div>
+      <button class="btn-order"><i class="fas fa-cart-plus"></i> Pesan Sekarang</button>
+    </nav>
+
+    <div class="slides-container">
+      <!-- SLIDE 1: BERANDA DENGAN BACKGROUND GAMBAR COCA-COLA -->
+      <div class="slide-beranda" data-aos="fade-up" data-aos-duration="1500">
+        <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=2070&auto=format&fit=crop" alt="Coca-Cola Background" class="bg-image">
+        <div class="overlay"></div>
+        <div class="beranda-content">
+          <h1 data-aos="zoom-in" data-aos-delay="300">COCA-COLA</h1>
+          <p data-aos="fade-up" data-aos-delay="500">Taste The Feeling • Original Since 1886</p>
+          <button class="beranda-btn" data-aos="fade-up" data-aos-delay="700"><i class="fas fa-fire"></i> Rasakan Sensasinya</button>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: KALENG COCA-COLA (tata letak baru) -->
+      <div class="slide slide-2" data-aos="fade-right">
+        <div class="col-left" data-aos="fade-right">
+          <h2>Coca-Cola <span style="color: #FFD700;">Kaleng</span></h2>
+          <p class="subhead">Nikmati kesegaran Coca-Cola dalam kemasan kaleng praktis.</p>
+          <div class="flavor-tag">
+            <span><i class="fas fa-leaf"></i> Rasa Original</span>
+            <span><i class="fas fa-bolt"></i> Karbonasi Sempurna</span>
+            <span><i class="fas fa-snowflake"></i> Dingin Lebih Nikmat</span>
+          </div>
+          <div class="price-section">
+            <div class="price-big">Rp 8.500 <small>/kaleng</small></div>
+            <div class="badge"><i class="fas fa-tag"></i> Promo 1+1</div>
+          </div>
+          <div class="cta-group">
+            <button class="btn-primary"><i class="fas fa-shopping-bag"></i> Beli Sekarang</button>
+            <button class="btn-outline"><i class="fas fa-heart"></i> Favorit</button>
+          </div>
+        </div>
+        <div class="col-right" style="text-align: center;">
+          <canvas id="cokeCanvas1" class="canvas-3d" width="500" height="750"></canvas>
+          <div class="rotate-hint"><i class="fas fa-mouse-pointer"></i> putar kaleng 3D</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: BOTOL COCA-COLA (tata letak baru) -->
+      <div class="slide slide-3" data-aos="fade-left">
+        <div class="col-left" style="text-align: center;">
+          <canvas id="cokeCanvas2" class="canvas-3d" width="500" height="750"></canvas>
+          <div class="rotate-hint"><i class="fas fa-mouse-pointer"></i> putar botol 3D</div>
+        </div>
+        <div class="col-right" data-aos="fade-left">
+          <h2>Coca-Cola <span style="color: #FFD700;">Botol</span></h2>
+          <p class="subhead">Botol ikonik dengan desain klasik yang tak tergantikan.</p>
+          <div class="flavor-tag">
+            <span><i class="fas fa-recycle"></i> Botol Daur Ulang</span>
+            <span><i class="fas fa-cube"></i> 390ml</span>
+            <span><i class="fas fa-star"></i> Edisi Koleksi</span>
+          </div>
+          <div class="price-section">
+            <div class="price-big">Rp 12.000 <small>/botol</small></div>
+            <div class="badge"><i class="fas fa-gift"></i> +Kaca Koleksi</div>
+          </div>
+          <div class="cta-group">
+            <button class="btn-primary"><i class="fas fa-cart-plus"></i> Pesan Botol</button>
+            <button class="btn-outline"><i class="fas fa-info-circle"></i> Detail</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: KARUSEL GAMBAR COCA-COLA (background polos) -->
+      <div class="slide-4" data-aos="fade-up">
+        <h2 data-aos="fade-down">📸 Koleksi Coca-Cola</h2>
+        <p data-aos="fade-up" data-aos-delay="150">Berbagai varian dan momen menyegarkan</p>
+        
+        <div class="swiper mySwiper" data-aos="fade-up" data-aos-delay="300">
+          <div class="swiper-wrapper">
+            <!-- Gambar Coca-Cola dari Unsplash -->
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola classic"></div></div>
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola can"></div></div>
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola bottle"></div></div>
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola glass"></div></div>
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola zero"></div></div>
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola lemon"></div></div>
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola ice"></div></div>
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola retro"></div></div>
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola summer"></div></div>
+            <div class="swiper-slide"><div class="slide-img"><img src="cocacola.jpg" alt="Coca-Cola limited"></div></div>
+          </div>
+        </div>
+        <p style="margin-top: 1.5rem; color: #FFE4E1;"><i class="fas fa-arrow-right"></i> Bergulir otomatis ke kanan</p>
+      </div>
+    </div>
+
+    <!-- Testimonial -->
+    <div class="testimonial-section" data-aos="fade-up">
+      <div class="testi-item" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-tint"></i>
+        <div class="testi-text"><p>+3 juta terjual</p><small>bulan ini</small></div>
+      </div>
+      <div class="testi-item" data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-star"></i>
+        <div class="testi-text"><p>4.8 ★ (45rb ulasan)</p><small>kepuasan pelanggan</small></div>
+      </div>
+      <div class="testi-item" data-aos="zoom-in" data-aos-delay="600">
+        <i class="fas fa-truck"></i>
+        <div class="testi-text"><p>Pengiriman cepat</p><small>1-2 jam sampai</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three.js import -->
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.128.0/build/three.module.js" } }
+  </script>
+
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <script>
+    AOS.init({
+      duration: 1200,
+      once: false,
+      mirror: true,
+      offset: 50,
+      easing: 'ease-in-out',
+      anchorPlacement: 'top-bottom',
+    });
+
+    // Inisialisasi Swiper
+    const swiper = new Swiper('.mySwiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      loop: true,
+      speed: 4000,
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      freeMode: true,
+      freeModeMomentum: false,
+      loopAdditionalSlides: 5,
+      allowTouchMove: true,
+    });
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'https://unpkg.com/three@0.128.0/examples/jsm/controls/OrbitControls.js';
+
+    // Fungsi untuk membuat kaleng Coca-Cola 3D
+    function createCokeCan(canvasId, targetY = 1.2) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      renderer.setSize(width, height, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x000000, 0);
+
+      const scene = new THREE.Scene();
+      scene.background = null;
+
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+      camera.position.set(4, 2.0, 5.5);
+      camera.lookAt(0, targetY, 0);
+
+      const controls = new OrbitControls(camera, canvas);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 2.0;
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.maxPolarAngle = Math.PI / 2.2;
+      controls.target.set(0, targetY, 0);
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0x404060);
+      scene.add(ambientLight);
+      const keyLight = new THREE.DirectionalLight(0xfff5e6, 1.5);
+      keyLight.position.set(2, 4, 5);
+      scene.add(keyLight);
+      const fillLight = new THREE.DirectionalLight(0xffcccc, 1.0);
+      fillLight.position.set(-4, 2, 3);
+      scene.add(fillLight);
+      const backLight = new THREE.PointLight(0xffaaaa, 1.0);
+      backLight.position.set(1, 2, -5);
+      scene.add(backLight);
+      const topLight = new THREE.PointLight(0xffffff, 0.8);
+      topLight.position.set(0, 5, 2);
+      scene.add(topLight);
+
+      // Buat texture untuk kaleng Coca-Cola
+      const canvasTex = document.createElement('canvas');
+      canvasTex.width = 1024;
+      canvasTex.height = 1024;
+      const ctx = canvasTex.getContext('2d');
+      
+      // Background merah Coca-Cola
+      const gradient = ctx.createLinearGradient(0, 0, 1024, 0);
+      gradient.addColorStop(0, '#C62828');
+      gradient.addColorStop(0.5, '#E53935');
+      gradient.addColorStop(1, '#C62828');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 1024, 1024);
+      
+      // Logo Coca-Cola
+      ctx.font = 'bold 160px "Inter", Arial, sans-serif';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.textAlign = 'center';
+      ctx.fillText('Coca-Cola', 512, 400);
+      
+      ctx.font = 'bold 80px "Inter", Arial, sans-serif';
+      ctx.fillStyle = '#FFD700';
+      ctx.fillText('Original Taste', 512, 550);
+      
+      ctx.font = '100px Arial';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('🥤', 512, 700);
+      
+      // Strip putih
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, 1024, 40);
+      ctx.fillRect(0, 984, 1024, 40);
+      
+      const texture = new THREE.CanvasTexture(canvasTex);
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat.set(1, 1.2);
+
+      // Material
+      const canMaterial = new THREE.MeshStandardMaterial({ map: texture, roughness: 0.3, metalness: 0.5 });
+      const silverMaterial = new THREE.MeshStandardMaterial({ color: 0xC0C0C0, metalness: 0.8, roughness: 0.2 });
+      const goldMaterial = new THREE.MeshStandardMaterial({ color: 0xFFD700, metalness: 0.7, roughness: 0.3 });
+
+      const canGroup = new THREE.Group();
+
+      // Badan kaleng
+      const canBody = new THREE.Mesh(new THREE.CylinderGeometry(0.9, 0.9, 2.4, 64), canMaterial);
+      canBody.position.y = 1.2;
+      canGroup.add(canBody);
+      
+      // Tutup atas
+      const topRim = new THREE.Mesh(new THREE.TorusGeometry(0.82, 0.06, 16, 48), silverMaterial);
+      topRim.rotation.x = Math.PI/2;
+      topRim.position.y = 2.5;
+      canGroup.add(topRim);
+      
+      const topLid = new THREE.Mesh(new THREE.CylinderGeometry(0.78, 0.78, 0.1, 48), goldMaterial);
+      topLid.position.y = 2.55;
+      canGroup.add(topLid);
+      
+      // Bawah
+      const bottomLid = new THREE.Mesh(new THREE.CylinderGeometry(0.82, 0.82, 0.1, 48), silverMaterial);
+      bottomLid.position.y = 0.05;
+      canGroup.add(bottomLid);
+      
+      const bottomCap = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.7, 0.08, 32), goldMaterial);
+      bottomCap.position.y = 0.0;
+      canGroup.add(bottomCap);
+
+      scene.add(canGroup);
+
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      });
+    }
+
+    // Fungsi untuk membuat botol Coca-Cola 3D
+    function createCokeBottle(canvasId, targetY = 1.4) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      renderer.setSize(width, height, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x000000, 0);
+
+      const scene = new THREE.Scene();
+      scene.background = null;
+
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+      camera.position.set(4, 2.0, 5.5);
+      camera.lookAt(0, targetY, 0);
+
+      const controls = new OrbitControls(camera, canvas);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 1.8;
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.maxPolarAngle = Math.PI / 2.2;
+      controls.target.set(0, targetY, 0);
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0x404060);
+      scene.add(ambientLight);
+      const keyLight = new THREE.DirectionalLight(0xfff5e6, 1.5);
+      keyLight.position.set(2, 4, 5);
+      scene.add(keyLight);
+      const fillLight = new THREE.DirectionalLight(0xffcccc, 1.0);
+      fillLight.position.set(-4, 2, 3);
+      scene.add(fillLight);
+      const backLight = new THREE.PointLight(0xffaaaa, 1.0);
+      backLight.position.set(1, 2, -5);
+      scene.add(backLight);
+
+      // Material
+      const glassMaterial = new THREE.MeshStandardMaterial({
+        color: 0x8B0000,
+        emissive: 0x330000,
+        roughness: 0.2,
+        metalness: 0.1,
+        transparent: true,
+        opacity: 0.9
+      });
+      const goldMaterial = new THREE.MeshStandardMaterial({ color: 0xFFD700, metalness: 0.6, roughness: 0.3 });
+
+      const bottleGroup = new THREE.Group();
+
+      // Badan botol
+      const bodyMain = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.8, 2.6, 32), glassMaterial);
+      bodyMain.position.y = 1.3;
+      bottleGroup.add(bodyMain);
+
+      // Leher botol
+      const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.65, 0.8, 32), glassMaterial);
+      neck.position.y = 2.5;
+      bottleGroup.add(neck);
+
+      // Tutup botol
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.4, 32), goldMaterial);
+      cap.position.y = 2.95;
+      bottleGroup.add(cap);
+
+      // Label
+      const labelCanvas = document.createElement('canvas');
+      labelCanvas.width = 512;
+      labelCanvas.height = 256;
+      const lCtx = labelCanvas.getContext('2d');
+      lCtx.fillStyle = '#C62828';
+      lCtx.fillRect(0, 0, 512, 256);
+      lCtx.font = 'bold 70px "Inter", sans-serif';
+      lCtx.fillStyle = '#FFFFFF';
+      lCtx.textAlign = 'center';
+      lCtx.fillText('Coca-Cola', 256, 140);
+      lCtx.font = '30px "Inter"';
+      lCtx.fillStyle = '#FFD700';
+      lCtx.fillText('Original', 256, 200);
+      
+      const labelTexture = new THREE.CanvasTexture(labelCanvas);
+      const labelMaterial = new THREE.MeshStandardMaterial({ map: labelTexture });
+      const label = new THREE.Mesh(new THREE.CylinderGeometry(0.72, 0.72, 0.8, 32), labelMaterial);
+      label.position.y = 1.5;
+      bottleGroup.add(label);
+
+      scene.add(bottleGroup);
+
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      });
+    }
+
+    // Inisialisasi canvas
+    createCokeCan('cokeCanvas1');
+    createCokeBottle('cokeCanvas2');
+  </script>
+</body>
+</html>
